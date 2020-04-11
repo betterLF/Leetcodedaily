@@ -1,0 +1,20 @@
+313. 超级丑数
+该题和寻找第k个数思路一样，只是因子多了
+因此单独建立一个数组存放（乘各个因子对应的）下标即可
+347. 前 K 个高频元素
+先用hashmap存储，key存放元素，value存放出现次数
+     res.put(nums[i],res.getOrDefault(nums[i],0)+1);
+这句话代表如果没有key为nums[i]的键，就新建一个为0的该键加一，有的话就不用管
+PriorityQueue<Integer> heap=new PriorityQueue<Integer>((n1,n2)->res.get(n1)-res.get(n2));
+这步是以hashmap的value值大小建立最小堆的过程(n1,n2)->res.get(n1)-res.get(n2)，这个代表重写比较方法。
+面试题40. 最小的k个数
+数的范围如果确定就可以用计数排序解决，线性时间
+不确定可以用PriorityQueue解决
+也可以用内定的sort函数解决
+1046. 最后一块石头的重量
+java使用优先队列，重写比较方法，依次取出两个poll进行计算
+还可以直接用快排，更快
+1379. 找出克隆二叉树中的相同节点
+其实只要对克隆树进行前序遍历即可，找到值就退出
+654. 最大二叉树
+关键找到最大值，左右递归
