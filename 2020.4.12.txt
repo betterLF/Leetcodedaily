@@ -1,0 +1,10 @@
+面试题55 - I. 二叉树的深度
+树的后序遍历 / 深度优先搜索往往利用 递归 或 栈 实现，本文使用递归实现。
+关键点： 此树的深度和其左（右）子树的深度之间的关系。显然，此树的深度 等于 左子树的深度 与 右子树的深度 中的 最大值 +1+1 。
+算法解析：
+终止条件： 当 root​ 为空，说明已越过叶节点，因此返回 深度 00 。
+递推工作： 本质上是对树做后序遍历。
+计算节点 root​ 的 左子树的深度 ，即调用 maxDepth(root.left) ；
+计算节点 root​ 的 右子树的深度 ，即调用 maxDepth(root.right) ；
+返回值： 返回 此树的深度 ，即 max(maxDepth(root.left), maxDepth(root.right)) + 1 。
+链接：https://leetcode-cn.com/problems/er-cha-shu-de-shen-du-lcof/solution/mian-shi-ti-55-i-er-cha-shu-de-shen-du-xian-xu-bia/
