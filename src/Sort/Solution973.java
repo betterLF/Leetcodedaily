@@ -1,5 +1,6 @@
 package Sort;
 
+import java.util.Arrays;
 import java.util.PriorityQueue;
 
 /**
@@ -26,6 +27,44 @@ public class Solution973 {
             res[i] = cur.poll();
         }
               return res;
+    }
+    //快排
+    public int[][] kClosest2(int[][] points, int K) {
+      int start=0;
+      int end=points.length-1;
+      while(start<end){
+          int index=patition(points,start,end);//index前的元素已经有序
+          if(index+1==K){//表示正好有K个元素有序
+              break;
+          }else if(index+1>K){//表示前面已经有超过K个元素有序了，所以只要在左边快排就行
+              end=index-1;
+          }else{//表示前面没有K个元素有序了，所以只要在右边快排就行
+              start=index+1;
+          }
+      }
+        return Arrays.copyOf(points,K);
+    }
+    private int patition(int [][]points,int start,int end){
+        int i=start+1;
+        int j=end+1;
+        int mid=dis(points[start][0],points[start][1]);
+        while (true){
+           while(dis(points[i][0],points[i][1])<mid&&i<end){
+                i++;
+            }
+            while(dis(points[--j][0],points[j][1])>mid&&j>start);
+            if(i>=j){
+                break;
+            }
+            swap(points,i,j);
+        }
+        swap(points,start,j);
+        return j;
+    }
+    private void swap(int [][]points,int i,int j){
+        int temp[]=points[i];
+        points[i]=points[j];
+        points[j]=temp;
     }
     private int dis(int i,int j){
         return i*i+j*j;
