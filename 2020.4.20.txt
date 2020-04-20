@@ -1,0 +1,16 @@
+841. 钥匙和房间
+广度优先搜索每个房间，只要未访问过就赋值为true
+注意：回溯时不需要把走不通的方案置false，因为每个房间的钥匙可以都拿
+面试题58 - II. 左旋转字符串
+只要注意String类中substring（int startindex,int endindex）中下标为endindex的字符不包括即可
+1108. IP 地址无效化
+新建StringBuilder，只要碰到.就append（[.]），其余不变即可
+709. 转换成小写字母
+新建StringBuilder，只要碰到大写字母(假设为m)就append（（char）m+32），其余不变即可
+804. 唯一摩尔斯密码词
+对words数组遍历每个单词，将每个单词的摩尔斯密码加入HashSet中，最后输出HashSet长度即可。
+面试题 08.09. 括号
+设置左括号个数和右括号长度分别为countLeft和countRight，然后递归加入字符，如果countLeft>countRight
+则加“（”和“）”都可以，反之只能加左括号，每次递归结束后把加入的括号从字符串中移除，并且对应的左右括号数量减一
+并且加括号时要确保该种类括号数小于n，当左右括号数都=n时，
+将StringBuilder加入结果集中。
