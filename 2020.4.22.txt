@@ -1,0 +1,13 @@
+344. 反转字符串
+就是普通的反转，即定义start=0，end=s.length-1;
+然后下标为start和end的交换位置，start++；end--，一直到start>=end
+注意：反转问题定义两个指针比用一个指针要快
+557. 反转字符串中的单词 III
+先用String的spilt方法，把单词与空格分离
+接着遍历spilt后的字符串数组
+ 对每个字符串执行ans.append(new StringBuilder(cur).reverse().toString()).append(" ");
+890. 查找和替换模式
+对于pattern出现的第一个字符用a表示，第二个不同的字符用b表示
+如ssaaaqq变成aabbbcc,对于words里的字符串也这样比较，若相同加入结果集中
+1347. 制造字母异位词的最小步骤数
+新建两个长度为26的int型数组，存放两个字符串各字符出现字数，最后两数组每个元素相减的绝对值相加除二即可。
