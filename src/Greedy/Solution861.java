@@ -1,3 +1,5 @@
+package Greedy;
+
 /**
  * @authtor liFei
  * @date 2020/4/22-6:50
