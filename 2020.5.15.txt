@@ -1,0 +1,78 @@
+279. 完全平方数
+方法一：定义一个集合存储所有小于等于该数的元素
+然后把该数加入hashset1中，遍历hsahset1，然后新建一个hashset2，需要的平方数个数+1，嵌套遍历集合，如果当前hashset1中元素等于集合当前元素，就返回结果，如果小于，就退出本层循环，如果大于，就把hashset1中元素-集合当前元素加入hashset2中，遍历完后，hashset1=hashset2，这样一次二层遍历完，得到的hashset1为减去一个完全平方数后还剩余的元素，以此类推
+方法二：动态规划
+定义长度为n+1的整型数组dp， dp[i] = Math.min(dp[i], dp[i - square_nums[s]] + 1);
+ square_nums[s]是个完全平方数，所以当前元素的最小完全平方数等于dp[i]（初始为i，即全为1组成）
+和dp[i - square_nums[s]] + 1（代表dp[i - square_nums[s]]处所需要的值+一个平方数）的最小值
+方法三：数学方法
+证明出一个数可以用最多4个完全平方数得到（值＝4 的k次方*(8m+7)时是4个），然后对于1个完全平方数直接判断（就是本身是完全平方数），对于2个可以遍历判断，否则为3个
+面试题 17.14. 最小K个数
+这题可以先快排然后看此时中间值在数组中的位置，如果索引＞k ,那么最小k个数在左半边，对左边继续快排(最小的k个值肯定在左边)，如果索引＜k，对右边继续快排(左边的肯定都在最小的k 个数里面)，直到中间值索引为k，此时该索引前的值就是结果(k-1分界)也可以。
+重点是快排方法：
+//挖坑
+int left=0;
+        int right=arr.length-1;
+        int count=0;
+       while(true){
+           int pivot=arr[left];
+           int i=left;
+           int j=right;
+          while (i<j){
+              while (i<j&&arr[j]>=pivot){//先右边
+                  j--;
+              }
+              arr[i]=arr[j];
+              while (i<j&&arr[i]<=pivot){
+                  i++;
+              }
+              arr[j]=arr[i];
+          }
+          arr[i]=pivot;
+           count=i;
+           if(count>k){
+               right=count-1;
+           }else if(count<k-1){
+               left=count+1;
+           }else{
+               break;
+           }
+       }
+//交换
+        int left=0;
+        int right=arr.length-1;
+        int count=0;
+        while(true){
+            int pivot=arr[left];
+            int i=left;
+            int j=right+1;
+            while (i<j){
+                while (arr[++i]<pivot){
+                    if(i==right){
+                        break;
+                    }
+                }
+                while (arr[--j]>pivot){
+                    if(left==j){
+                        break;
+                    }
+                }
+                if(i<j){
+                    swap(arr,i,j);
+                }
+            }
+            swap(arr,j,left);
+            count=j;
+            if(count>k){
+                right=count-1;
+            }else if(count<k-1){
+                left=count+1;
+            }else{
+                break;
+            }
+        }
+102. 二叉树的层序遍历
+该题就是队列存储当层元素，然后只要队列不为空，就取出当层元素，并依次加入后续元素即可，加元素和取元素记位置
+565. 数组嵌套
+该题的关键就是每一对嵌套中的元素只会出现在该嵌套中，定义一个数组存放元素是否访问过，因此每访问一个嵌套时，就把它置为true，代表访问过。
+算法：遍历数组，如果没访问过，就把它置为true，下一个索引变成它的值，然后当前嵌套层数+1，如果访问过，就比较该嵌套深度与当前最大嵌套的大小
