@@ -1,0 +1,28 @@
+844. 比较含退格的字符串
+方法一：使用栈，不碰到'#’,就push，碰到就pop，
+然后把两个字符串对应的stack相比较，只要一对pop不一样就false
+方法二：从后开始遍历，定义count记录#个数
+只要碰到‘#’就count++；下标前移
+如果不是‘#’而且count!=0就count--，下标前移
+如果count==0就退出当前循环比较此时下标元素，相同继续，不同退出
+直到两个字符串都遍历到开头
+5392. 分割字符串的最大得分
+定义两个数组计算前i个元素中1或者0出现个数
+   for (int i=0;i<ans.length-1;i++){
+            max=Math.max(max,count0[i]+count1[ans.length-1]-count1[i]);
+           //count0[i]+count1[ans.length-1]-count1[i]
+         表示左边i个右边k-i个的总和
+        }
+5393. 可获得的最大点数
+定义一个sum整型数组，下标i存储前i+1个元素的合
+  for (int i=0;i<=k;i++){
+             max=Math.max(max,preSum[i]+preSum[len]-preSum[len-k+i])；
+            //preSum[i]+preSum[len]-preSum[len-k+i]
+            //左边i个右边k-i个的总和                                                                                                      
+         }
+5394. 对角线遍历 II
+矩形对角线上每一点的横纵坐标之和一样且唯一
+所以只要定义Map<Integer,List<Integer>> map = new TreeMap<>();
+key存放横纵坐标之和，value存放元素
+然后遍历原来集合，在对应的key值放入元素即可
+注意这时候是正序放入的，所以存放结果时要逆序赋值
