@@ -1,0 +1,8 @@
+191. 位1的个数
+for循环32次，每次定义一个cur=（1<<i），如果cur和n相与不为0说明该位为1，结果个数加1
+190. 颠倒二进制位
+定义结果ans=0；for循环32次，每次定义一个cur=（1<<i），如果cur和n相与不为0说明该位为1，则ans|=(1<<j)（j从31开始，而且每次循环无论该位为不为1都j--）.
+6. Z 字形变换
+定义一个StringBuilder集合，定义行数curRow和flag开始遍历原字符串，将集合的第curRow个加入字符，然后对curRow进行修改，如果curRow==0，代表到头，则curRow++，flag=true(代表向下遍历）,如果curRow==row-1，则到达末尾，则curRow--，flag=false（代表向上遍历）,否则根据flag进行curRow++或者--。(注意如果题目要求行数为1，直接返回原字符串)
+837. 新21点
+https://leetcode-cn.com/problems/new-21-game/solution/xin-21dian-by-leetcode-solution/
