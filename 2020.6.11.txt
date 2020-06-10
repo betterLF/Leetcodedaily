@@ -1,0 +1,12 @@
+50. Pow(x, n)
+二分法，分n的正负，另外因为n为负数时是其为正数得出结果的倒数，所以计算时把n当正数算，因为n可能为-2的31次方，取正时会溢出，所以定义num为long类型，num=n；然后while(num!=0)循环，定义curNum=1，curAns=x，while循环只要curNum*2<num,就curAns*=curAns，curNum*=2；内层while循环结束后，ans*=curAns，num-=curNum,继续循环。最后根据n的正负得出结果
+53. 最大子序和
+先求出前i项和的数组，然后定义当前数组最小值为0和sum[0]中的较小值，结果为sum[0]然后从1开始遍历数组， ans=Math.max(ans,sum[i]-min);然后如果sum[i]<最小值，就更新最小值即可
+55. 跳跃游戏
+定义可以到达的最右边值为rightmost,初始化为0，如果当前访问下标小于等于rightmost,就更新右边界值
+为 rightmost = Math.max(rightmost, i + nums[i]);//右边界更新，如果此时右边界到达末尾，就返回true，否则遍历结束，返回false
+990. 等式方程的可满足性
+并查集。定义parent数组，下标对应每个字母，值初始化和下标一样，代表该点的父节点为本身。然后遍历数组，如果是==,就将两个数的根节点指向同一个，如parent[第一个数的根节点值]=第二个根节点的值，这样所有以第一个数为根节点的结点的根节点都变成了第二个。然后遍历数组，如果是!=，就比较两个数的根节点，如果相同，返回false，否则最后返回true。找一个数的根节点用  while (parent[index] != index) {//只要不是最终的父节点
+            parent[index] = parent[parent[index]];//将当前父节点的父节点赋值给该元素
+            index = parent[index];//下标后移
+        }
