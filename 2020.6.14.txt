@@ -1,0 +1,8 @@
+81. 搜索旋转排序数组 II
+二分查找，如果中间值==目标值，返回true，如果中间值和左值相等，左值后移(此时无法判断左右哪边有序，左值后移排除一个干扰)，否则如果中间值大于左值，如果目标值在左边，right=mid-1,否则left=mid+1,右边同理。while结束后返回false。
+82. 删除排序链表中的重复元素 II
+定义newhead，next域指向head，curVal=head.val,然后head后移，pre指向newhead，只要head!=null,while循环，如果当前结点的值等于curVal，则将pre.next指向null(原本pre.next指向的是curVal处的结点)，如果不等，进行判断，如果pre.next等于null，就将pre.next=head,否则代表当前的pre.next的结点只出现过一次，就将pre后移，pre.next置为head，每层结束，head后移。
+86. 分隔链表
+定义left和right头结点，分别存放小于x的结点和大于等于x的结点,再定义两个结点分别指向left和right，遍历head结点，分类放在curleft和curRight里，最后curleft.next指向right.next,curRight.next=null,返回left.next。
+89. 格雷编码
+贪心算法，将当前得到的所有格雷码加入hashset中，然后调用选择函数，找到与最近一个加入hashset中的元素相比只有一位不同的元素（该元素不在hashset）中，继续下去，一直到找完所有元素
