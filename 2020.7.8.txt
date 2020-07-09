@@ -1,0 +1,12 @@
+306. 累加数
+回溯法，但是保存的数为long类型，防止溢出
+https://leetcode-cn.com/problems/additive-number/solution/sou-jiu-ng-sou-by-a-12-ca1eae-cae/
+https://leetcode-cn.com/problems/additive-number/solution/javahui-su-san-zhi-zhen-ji-bai-100-by-chidehang/
+5452. 判断能否形成等差数列
+(只有一项直接返回true),否则先将数组排序再求得第一项和第二项的差值，遍历数组，只要后面差值不为该值，就直接返回false，否则遍历结束返回true。
+5453. 所有蚂蚁掉下来前的最后一刻
+返回往左走到开头的最大值和往右走到末尾的最大值的最大值。
+5454. 统计全 1 子矩形
+遍历二维数组，如果当前值为1，就调用函数，求得以其为左上角的矩形数目
+求矩形数目：创建集合，集合下标代表距离该行的行数，集合值代表该行1的个数
+直到某一行开头不为1结束。遍历集合，该起点的初始矩阵设为集合第一项(=target)，如果此时该项值大于等于target，结果将是target，否则加上该值，target改成该值。
