@@ -1,0 +1,10 @@
+319. 灯泡开关
+根据题意可以发现每个灯泡只有在它的因子轮才会发生转变，而因为初始为关闭，所以在奇数个因子时为亮着，所以只要得到每个灯泡数对应的因子个数即可累加得到结果
+但是进一步考虑，每个数都是有两个因子相乘得来，怎么会出现奇数个因子呢，即该数可以开平方，所以只要找出开平方数的个数即可，再进一步想，1到n中有多少数可以开平方呢，如果n的开平方是10，不就意味着n>=100，那开平方数1-10都在这个范围类，则有10个开平方数。所以最后返回(int)Math.sqrt(n)即可。
+322. 零钱兑换
+1:动态规划，设置dp数组长度为amount+1，初始值为amount+1(只要硬币中有1结果就不可能大于amount+1),dp[0]=0，dp[i]=min（dp[i-coins[j]+1,dp[i]）(遍历所有的coins得到当前总金额为i时的最少金币数），最后根据dp[amount]和amount+1是否相等来返回结果
+2:深度优先搜索，dfs(int amount，int start，int total)(amount当前剩余值，start开始下标，total当前所花硬币数)，先amount/|%coins[start]得到当前可以减去的最大个数以及余数，如果余数为0就说明刚好减完，而此时start又是最大的硬币，所以结果为ans和total+count的最小值（ans初始化为极大值），如果余数不为0，并且下标到达0，说明当前分类无法得到结果，返回false，否则只要count大于等于0，进行while循环，cur=amount-count*coins[start]，如果当前start+count>=ans就退出循环不用考虑了，否则amount变成cur，start变成start-1，total变成total+count继续遍历，count--。
+324. 摆动排序 II
+将数组排序后分成左右两部分(左边长度大于等于右边)，然后插入时进行反转插入(左右各选择一个)
+328. 奇偶链表
+定义left和right结点并保持right结点，记为r，然后遍历原链表，隔项给left和right添加元素即可，最后left.next=r.next，返回head即可
