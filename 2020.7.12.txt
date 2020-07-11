@@ -1,0 +1,21 @@
+面试题 16.11. 跳水板
+如果k==0直接返回空数组
+如果短和长木板长度一样，直接返回长度*k
+否则定义dif=longer-shorter,结果数组长度为k+1
+ans[0]=k*shorter，然后递增的等差数列(即每次加上dif即可)
+343. 整数拆分
+动态规划：定义一个静态数组dp[59]，每一个下标对应其数组拆分的最大值
+然后遍历整个数组，第二层将该下标拆分成两个求其dp[k]*dp[i-k]和dp[i]最大值
+注意最后要在和i进行比较，因为dp[2]不这么做结果为1，后面用到dp[2]其实应该是2
+方法中，如果n<=3时(即肯定有一个1)，返回n-1，否则返回dp[n]
+数学法:
+https://leetcode-cn.com/problems/integer-break/solution/343-zheng-shu-chai-fen-tan-xin-by-jyd/
+341. 扁平化嵌套列表迭代器
+定义集合list和sum，count，构造器中初始化集合和count=0；然后遍历List<NestedInteger> nestedList
+如果当前位置为数字，直接加入list，否则递归该位置处的List<NestedInteger> curnestedList,递归函数中同理，最后sum初始化为list.size(）。
+hasNext(），只要count<sum，返回true，否则false。
+next()，只要hasNext()为true，结果list.get(count)保存，count++，输出结果，否则返回-1.
+355. 设计推特
+如果不面向对象，单纯靠该类设计时定义一个map和list,key为用户名，value为其关注者(hashset存放),关注和取消功能直接对map进行操作,而集合存放数组，第一位代表用户名，第二位代表作品名，用于取出最近10条记录。
+面向对象
+https://leetcode-cn.com/problems/design-twitter/solution/ha-xi-biao-lian-biao-you-xian-dui-lie-java-by-liwe/
