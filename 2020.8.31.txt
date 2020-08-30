@@ -1,0 +1,6 @@
+686. 重复叠加字符串匹配
+先对A进行叠加操作直到其长度大于B，然后如果此时str.lastIndexOf(B)!=-1，说明此时str中有B，直接返回此时重叠次数。否则再加一个A进行判断，最后不满足返回-1。
+687. 最长同值路径
+递归，如果当前结点为空，返回0，递归左右子树得到其返回值left和right，如果当前结点左子树存在并且值和当前值相等，leftans+=left+1，同理，rightans+=right+1，则最大值为max和leftans+rightans的最大值，最后返回leftans和rightans的最大值，代表当前该点的最大深度。
+690. 员工的重要性
+广度优先搜索，先遍历集合将id和其employee类加入map集合，然后dfs该id，遍历该id对应的employee对应的直系下属(用dfs求值)加入结果中，最后返回该结果。
