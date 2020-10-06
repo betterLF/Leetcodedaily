@@ -6,7 +6,7 @@ import java.util.Stack;
  * @authtor liFei
  * @date 2020/4/11-10:11
  */
-public class Soiution1379 {
+public class Solution1379 {
     /*
     给你两棵二叉树，原始树 original 和克隆树 cloned，以及一个位于原始树 original 中的目标节点 target。
     其中，克隆树 cloned 是原始树 original 的一个 副本 。
